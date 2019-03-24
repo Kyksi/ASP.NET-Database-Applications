@@ -21,7 +21,15 @@ namespace DatabaseApplications.Students_Table
 
             sda.Fill(ds);
 
-            return null;
+            return ds;
+        }
+
+        public void queryExecution(SqlCommand sqlcmd)
+        {
+            sqlcmd.Connection = conn;
+            conn.Open();
+            sqlcmd.ExecuteNonQuery();
+            conn.Close();
         }
 
     }
