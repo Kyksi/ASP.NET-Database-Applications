@@ -19,8 +19,6 @@ namespace DatabaseApplications.Students_Table
         {
             if (!IsPostBack)
                 display();
-            else
-                addToFooter();
         }
 
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -57,9 +55,9 @@ namespace DatabaseApplications.Students_Table
 
         public void AddNew(object sender, EventArgs e)
         {
-            bs.name = ((TextBox)GridView1.FooterRow.Cells[1].Controls[0]).Text;
-            bs.surname = ((TextBox)GridView1.FooterRow.Cells[2].Controls[0]).Text;
-            bs.index = Int32.Parse(((TextBox)GridView1.FooterRow.Cells[3].Controls[0]).Text);
+            bs.name = ((TextBox)GridView1.FooterRow.FindControl("TextBox5")).Text;
+            bs.surname = ((TextBox)GridView1.FooterRow.FindControl("TextBox6")).Text;
+            bs.index = Int32.Parse(((TextBox)GridView1.FooterRow.FindControl("TextBox7")).Text);
 
             bs.insertStudents();
             Response.Redirect("students-table.aspx");
@@ -69,24 +67,7 @@ namespace DatabaseApplications.Students_Table
         {
             GridView1.DataSource = bs.selectStudents();
             GridView1.DataBind();
-
-            addToFooter();
         }
 
-        public void addToFooter()
-        {
-            TextBox txt = new TextBox();
-            TextBox txt2 = new TextBox();
-            TextBox txt3 = new TextBox();
-            Button btn = new Button();
-            btn.ID = new Guid().ToString();
-            btn.CssClass = "btn btn-success";
-            btn.Text = "Add +";
-            btn.Click += new EventHandler(AddNew);
-            GridView1.FooterRow.Cells[1].Controls.Add(txt);
-            GridView1.FooterRow.Cells[2].Controls.Add(txt2);
-            GridView1.FooterRow.Cells[3].Controls.Add(txt3);
-            GridView1.FooterRow.Cells[5].Controls.Add(btn);
-        }
     }
 }
