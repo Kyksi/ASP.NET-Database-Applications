@@ -45,7 +45,16 @@ namespace DatabaseApplications.Students_Table
             sqlcmd.CommandText = sqlQuery;
 
             dal.queryExecution(sqlcmd);
+        }
 
+        public void deleteStudent()
+        {
+            string sqlQuery = String.Format("delete from Students where id={0}", id);
+
+            SqlCommand sqlcmd = new SqlCommand();
+            sqlcmd.CommandText = sqlQuery;
+
+            dal.queryExecution(sqlcmd);
         }
     }
 }

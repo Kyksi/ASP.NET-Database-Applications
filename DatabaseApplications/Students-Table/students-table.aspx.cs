@@ -13,24 +13,27 @@ namespace DatabaseApplications.Students_Table
 {
     public partial class students_table : System.Web.UI.Page
     {
-
         BuisnessLayer bs = new BuisnessLayer();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            display();
+            if (!IsPostBack)
+                display();
+            else
+                addToFooter();
         }
-
 
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            bs.id = Int32.Parse(GridView1.DataKeys[e.RowIndex]["Id"].ToString());
+            bs.deleteStudent();
+            display();
         }
 
         protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GridView1.EditIndex = e.NewEditIndex;
             display();
-
         }
 
         protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
@@ -41,30 +44,15 @@ namespace DatabaseApplications.Students_Table
 
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            String connectionString = @"Data Source=SomeeDatabase.mssql.somee.com;Initial Catalog=SomeeDatabase;Persist Security Info=True;User ID=Kyksi_SQLLogin_1;Password=8iopls1rng;";
-
-            String id = GridView1.DataKeys[e.RowIndex]["Id"].ToString();
-            SqlConnection connection = new SqlConnection(connectionString);
-            SqlCommand command = new SqlCommand();
-            command.Connection = connection;
-            command.CommandText = string.Format("update Students set Name='{0}',Surname='{1}', StudentIndex='{2}' where ID={3}", e.NewValues["Name"], e.NewValues["Surname"], e.NewValues["StudentIndex"], id);
-            command.CommandType = CommandType.Text;
-            connection.Open();
-            command.ExecuteNonQuery();
-            connection.Close();
-            GridView1.EditIndex = -1;
-
-            /*
             bs.id = Int32.Parse(GridView1.DataKeys[e.RowIndex]["Id"].ToString());
             bs.name = e.NewValues["Name"].ToString();
             bs.surname = e.NewValues["Surname"].ToString();
             bs.index = Int32.Parse(e.NewValues["StudentIndex"].ToString());
 
+            GridView1.EditIndex = -1;
+
             bs.updateStudents();
-            */
-
             display();
-
         }
 
         public void AddNew(object sender, EventArgs e)
@@ -74,14 +62,14 @@ namespace DatabaseApplications.Students_Table
             bs.index = Int32.Parse(((TextBox)GridView1.FooterRow.Cells[3].Controls[0]).Text);
 
             bs.insertStudents();
-            display();
+            Response.Redirect("students-table.aspx");
         }
-
 
         public void display()
         {
             GridView1.DataSource = bs.selectStudents();
             GridView1.DataBind();
+
             addToFooter();
         }
 

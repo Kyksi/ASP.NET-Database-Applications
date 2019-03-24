@@ -41,16 +41,54 @@
                 OnRowDeleting="GridView1_RowDeleting" OnRowCancelingEdit="GridView1_RowCancelingEdit" 
                 OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" EnableModelValidation="False" ShowFooter="True">
                 <Columns>
-                    <asp:BoundField DataField="Id" HeaderText="Id" Visible="False" />
-                    <asp:BoundField DataField="Name" HeaderText="Name" />
-                    <asp:BoundField HeaderText="Surname" DataField="Surname" />
-                    <asp:BoundField HeaderText="Index" DataField="StudentIndex" />
-                    <asp:CommandField ButtonType="Button" ShowEditButton="True" ControlStyle-CssClass="btn btn-dark">
-                        <ControlStyle CssClass="btn btn-dark"></ControlStyle>
-                    </asp:CommandField>
-                    <asp:CommandField ButtonType="Button" ShowDeleteButton="True" ControlStyle-CssClass="btn btn-danger">
-                        <ControlStyle CssClass="btn btn-danger"></ControlStyle>
-                    </asp:CommandField>
+                    <asp:TemplateField HeaderText="Id" Visible="False">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Id") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("Id") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Name">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Surname">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Surname") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("Surname") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Index">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("StudentIndex") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("StudentIndex") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ShowHeader="False">
+                        <EditItemTemplate>
+                            <asp:Button ID="Button1" runat="server" CausesValidation="True" CommandName="Update" Text="Обновить" />
+                            &nbsp;<asp:Button ID="Button2" runat="server" CausesValidation="False" CommandName="Cancel" Text="Отмена" />
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="Edit" Text="Правка" />
+                        </ItemTemplate>
+                        <ControlStyle CssClass="btn btn-dark" />
+                    </asp:TemplateField>
+                    <asp:TemplateField ShowHeader="False">
+                        <ItemTemplate>
+                            <asp:Button ID="Button3" runat="server" CausesValidation="False" CommandName="Delete" Text="Удалить" />
+                        </ItemTemplate>
+                        <ControlStyle CssClass="btn btn-danger" />
+                    </asp:TemplateField>
                 </Columns>
                 <FooterStyle BackColor="LightGray" ForeColor="Black" />
                 <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
