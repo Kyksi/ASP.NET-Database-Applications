@@ -1,41 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="students-table.aspx.cs" Inherits="DatabaseApplications.Students_Table.students_table" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="employee-table.aspx.cs" Inherits="DatabaseApplications.Employees_Table.employee_table" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Students</title>
-    <style>
-        table{
-            width: 90%;
-            margin-top:15px;
-            text-align: center;
-        }
-        input[type='text']{
-            width: 250px;
-            height: 30px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            padding-left: 10px;
-            margin-top:15px;
-        }
-        tr:hover{
-            background-color: lightgray;
-            transition: 1s;
-        }
-        input[type='button'], input[type='submit']{
-            width: 80px;
-            height: 40px;
-        }
-        .invalid{
-            color: red;
-            display: block;
-        }
-    </style>
+    <title></title>
 </head>
 <body>
     <form id="form1" runat="server">
