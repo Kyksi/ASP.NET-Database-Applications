@@ -26,7 +26,7 @@ namespace DatabaseApplications.Students_Table
             bs.id = Int32.Parse(GridView1.DataKeys[e.RowIndex]["Id"].ToString());
             bs.deleteStudent();
             display();
-        }
+            }
 
         protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
         {
@@ -42,29 +42,44 @@ namespace DatabaseApplications.Students_Table
 
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            bs.id = Int32.Parse(GridView1.DataKeys[e.RowIndex]["Id"].ToString());
-            bs.name = e.NewValues["Name"].ToString();
-            bs.surname = e.NewValues["Surname"].ToString();
-            bs.index = Int32.Parse(e.NewValues["StudentIndex"].ToString());
+            try
+            {
+                bs.id = Int32.Parse(GridView1.DataKeys[e.RowIndex]["Id"].ToString());
+                bs.name = e.NewValues["Name"].ToString();
+                bs.surname = e.NewValues["Surname"].ToString();
+                bs.index = Int32.Parse(e.NewValues["StudentIndex"].ToString());
+                GridView1.EditIndex = -1;
 
-            GridView1.EditIndex = -1;
-
-            bs.updateStudents();
-            display();
+                bs.updateStudents();
+                display();
+            }
+            catch (Exception ex)
+            {
+                Label5.Visible = true;
+            }
         }
 
         public void AddNew(object sender, EventArgs e)
         {
-            bs.name = ((TextBox)GridView1.FooterRow.FindControl("TextBox5")).Text;
-            bs.surname = ((TextBox)GridView1.FooterRow.FindControl("TextBox6")).Text;
-            bs.index = Int32.Parse(((TextBox)GridView1.FooterRow.FindControl("TextBox7")).Text);
+            String txt_name = ((TextBox)GridView1.FooterRow.FindControl("TextBox5")).Text;
+            String txt_surname = ((TextBox)GridView1.FooterRow.FindControl("TextBox6")).Text;
+            String txt_index = ((TextBox)GridView1.FooterRow.FindControl("TextBox7")).Text;
 
-            bs.insertStudents();
-            Response.Redirect("students-table.aspx");
+            if ( !txt_name.Equals("") || !txt_surname.Equals("") || !txt_index.Equals(""))
+            {
+                bs.name = txt_name;
+                bs.surname = txt_surname;
+                bs.index = Int32.Parse(txt_index);
+
+                bs.insertStudents();
+                Response.Redirect("students-table.aspx");
+            }
+            Label5.Visible = true;
         }
 
         public void display()
         {
+            Label5.Visible = false;
             GridView1.DataSource = bs.selectStudents();
             GridView1.DataBind();
         }

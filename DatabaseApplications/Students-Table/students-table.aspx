@@ -141,6 +141,7 @@
                 <SortedDescendingCellStyle BackColor="#E5E5E5" />
                 <SortedDescendingHeaderStyle BackColor="#242121" />
             </asp:GridView>
+            <asp:Label ID="Label5" runat="server" Text="Please don't leave empty fields" CssClass="invalid" Visible="false"></asp:Label>
         </center>
     </form>
 </body>
