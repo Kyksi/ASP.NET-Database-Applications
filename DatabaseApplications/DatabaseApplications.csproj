@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="Employees-Table\add-new-employee.aspx" />
     <Content Include="Employees-Table\employee-table.aspx" />
     <Content Include="Students-Table\students-table.aspx" />
     <Content Include="Web.config">
@@ -81,6 +82,15 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Employees-Table\add-new-employee.aspx.cs">
+      <DependentUpon>add-new-employee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employees-Table\add-new-employee.aspx.designer.cs">
+      <DependentUpon>add-new-employee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employees-Table\BuisnessLayerEmployee.cs" />
+    <Compile Include="Employees-Table\DataAccesslayerEmployee.cs" />
     <Compile Include="Employees-Table\employee-table.aspx.cs">
       <DependentUpon>employee-table.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

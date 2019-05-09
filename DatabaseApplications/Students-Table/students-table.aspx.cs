@@ -65,7 +65,7 @@ namespace DatabaseApplications.Students_Table
             String txt_surname = ((TextBox)GridView1.FooterRow.FindControl("TextBox6")).Text;
             String txt_index = ((TextBox)GridView1.FooterRow.FindControl("TextBox7")).Text;
 
-            if ( !txt_name.Equals("") || !txt_surname.Equals("") || !txt_index.Equals(""))
+            if ( !txt_name.Equals("") && !txt_surname.Equals("") && !txt_index.Equals(""))
             {
                 bs.name = txt_name;
                 bs.surname = txt_surname;

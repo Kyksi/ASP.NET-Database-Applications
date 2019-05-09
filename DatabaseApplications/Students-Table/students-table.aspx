@@ -35,6 +35,9 @@
             color: red;
             display: block;
         }
+        form{
+        	margin-bottom: 70px;
+        }
     </style>
 </head>
 <body>
