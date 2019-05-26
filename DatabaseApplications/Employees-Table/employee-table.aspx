@@ -11,8 +11,8 @@
     <style>
         table{
             text-align: center;
-            width: 80%;
-            margin: 50px auto;
+            width: 90%;
+            margin: 15px auto;
         }
         th{
             width:10%;
@@ -22,7 +22,6 @@
         }
         tr:hover{
             background-color: lightgray;
-            font-size: 17px;
             transition: 1s;
         }
         form{
@@ -38,6 +37,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <a href="../Default.aspx" style="float: right; margin-right: 5%;">Main page</a><br />
         <center>
             <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
                 <FooterStyle BackColor="#CCCC99" ForeColor="Black" />

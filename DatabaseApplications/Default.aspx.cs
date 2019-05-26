@@ -11,7 +11,7 @@ namespace DatabaseApplications
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Server.Transfer("~/Students-Table/students-table.aspx");
+            //Server.Transfer("~/Students-Table/students-table.aspx");
         }
     }
 }

@@ -81,12 +81,14 @@ namespace DatabaseApplications.Employees_Table
             street = txt_street.Text;
             zip_code = txt_zip.Text;
             phone1 = txt_phone1.Text;
-            if (!txt_phone2.Text.Equals("")) phone2 = txt_phone2.Text;
-            else phone2 = "";
+            phone2 = txt_phone2.Text;
 
             label_name.Text = name; label_last_name.Text = last_name; label_pesel.Text = pesel;
             label_department.Text = department; label_address.Text = zip_code + ", " + city + ", " + street;
-            label_phone1.Text = phone1; label_phone2.Text = phone2;
+            label_phone1.Text = phone1;
+
+            if (!phone2.Equals("")) label_phone2.Text = phone2;
+            else label_phone2.Text = "Second phone nr. wasn't provided";
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)

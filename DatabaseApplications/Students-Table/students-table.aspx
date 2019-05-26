@@ -42,6 +42,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <a href="../Default.aspx" style="float: right; margin-right: 5%;">Main page</a><br />
         <center>
             <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" 
                 BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" 

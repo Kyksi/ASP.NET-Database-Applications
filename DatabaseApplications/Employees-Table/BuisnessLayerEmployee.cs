@@ -41,7 +41,7 @@ namespace DatabaseApplications.Employees_Table
 
         public void insertEmployee()
         {
-            SqlCommand sqlcmd = new SqlCommand("NewEmployee");
+            SqlCommand sqlcmd = new SqlCommand("NewEmployee_v2");
             sqlcmd.CommandType = CommandType.StoredProcedure;
 
             sqlcmd.Parameters.Add("@name", SqlDbType.VarChar, 20).Value = name;
